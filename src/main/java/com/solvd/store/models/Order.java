@@ -1,6 +1,6 @@
 package com.solvd.store.models;
 
-public class Orders {
+public class Order {
     private int order_id;
     private int customer_id;
     private String order_date;
@@ -9,7 +9,7 @@ public class Orders {
     private int employees_id;
     private int order_Status_id;
 
-    public Orders(int customer_id, String order_date, String total_price, int shipping_address_id, int employees_id, int order_Status_id) {
+    public Order(int customer_id, String order_date, String total_price, int shipping_address_id, int employees_id, int order_Status_id) {
         this.customer_id = customer_id;
         this.order_date = order_date;
         this.total_price = total_price;

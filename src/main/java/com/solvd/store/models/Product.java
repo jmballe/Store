@@ -1,6 +1,6 @@
 package com.solvd.store.models;
 
-public class Products {
+public class Product {
     private int product_id;
     private String name;
     private String price;
@@ -8,7 +8,7 @@ public class Products {
     private int category_id;
     private int supplier_id;
 
-    public Products(String name, String price, String description, int category_id, int supplier_id) {
+    public Product(String name, String price, String description, int category_id, int supplier_id) {
         this.name = name;
         this.price = price;
         this.description = description;

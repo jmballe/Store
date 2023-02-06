@@ -1,12 +1,12 @@
 package com.solvd.store.models;
 
-public class Order_items {
+public class Order_item {
 
     private int order_id;
     private int product_id;
     private int quantity;
 
-    public Order_items(int order_id, int product_id, int quantity) {
+    public Order_item(int order_id, int product_id, int quantity) {
         this.order_id = order_id;
         this.product_id = product_id;
         this.quantity = quantity;

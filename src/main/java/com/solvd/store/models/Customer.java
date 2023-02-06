@@ -1,25 +1,23 @@
 package com.solvd.store.models;
 
-public class Employees {
-    private int employee_id;
+public class Customer {
+    private int customer_id;
     private String name;
     private String email;
     private String address;
-    private int position_id;
 
-    public Employees(String name, String email, String address, int position_id) {
+    public Customer(String name, String email, String address) {
         this.name = name;
         this.email = email;
         this.address = address;
-        this.position_id = position_id;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
     public String getName() {
@@ -46,22 +44,13 @@ public class Employees {
         this.address = address;
     }
 
-    public int getPosition_id() {
-        return position_id;
-    }
-
-    public void setPosition_id(int position_id) {
-        this.position_id = position_id;
-    }
-
     @Override
     public String toString() {
-        return "Employees{" +
-                "employee_id=" + employee_id +
+        return "Customers{" +
+                "customer_id=" + customer_id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", position_id=" + position_id +
                 '}';
     }
 }
