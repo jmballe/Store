@@ -16,7 +16,26 @@ public class Shipping_addressDAO extends MySQLDAO implements IShipping_addressDA
     private final ConnectionPool connectionPool = ConnectionPool.getInstance(5);
     @Override
     public Shipping_address getEntityById(int id) {
-        return null;
+        Connection connection = connectionPool.getConnection();
+        Shipping_address shippingAddress = new Shipping_address();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GETBYID, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            ResultSet result = preparedStatement.executeQuery();
+            if (result.next()) {
+                shippingAddress.setShipping_address_id(result.getInt(1));
+                shippingAddress.setName(result.getString(2));
+                shippingAddress.setAddress(result.getString(3));
+                shippingAddress.setCity(result.getString(4));
+                shippingAddress.setState(result.getString(5));
+                shippingAddress.setZipcode(result.getString(6));
+                shippingAddress.setPhone(result.getString(7));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
+        }
+        return shippingAddress;
     }
 
     @Override

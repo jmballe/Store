@@ -4,7 +4,6 @@ import com.solvd.store.dao.ISupplierDAO;
 import com.solvd.store.models.Supplier;
 import com.solvd.store.utils.ConnectionPool;
 
-import java.io.IOException;
 import java.sql.*;
 
 public class SupplierDAO extends MySQLDAO implements ISupplierDAO {
@@ -21,7 +20,25 @@ public class SupplierDAO extends MySQLDAO implements ISupplierDAO {
 
     @Override
     public Supplier getEntityById(int id) {
-        return null;
+        Connection connection = connectionPool.getConnection();
+        Supplier supplier = new Supplier();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GETBYID, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            ResultSet result = preparedStatement.executeQuery();
+            if (result.next()) {
+                supplier.setSupplier_id(result.getInt(1));
+                supplier.setName(result.getString(2));
+                supplier.setAddress(result.getString(3));
+                supplier.setCity(result.getString(4));
+                supplier.setState(result.getString(5));
+                supplier.setZipcode(result.getString(6));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
+        }
+        return supplier;
     }
 
     @Override

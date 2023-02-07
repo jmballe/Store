@@ -16,7 +16,26 @@ public class WarehouseDAO extends MySQLDAO implements IWarehouseDAO {
     private final ConnectionPool connectionPool = ConnectionPool.getInstance(5);
     @Override
     public Warehouse getEntityById(int id) {
-        return null;
+        Connection connection = connectionPool.getConnection();
+        Warehouse warehouse = new Warehouse();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GETBYID, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            ResultSet result = preparedStatement.executeQuery();
+            if (result.next()) {
+                warehouse.setWarehouse_id(result.getInt(1));
+                warehouse.setName(result.getString(2));
+                warehouse.setAddress(result.getString(3));
+                warehouse.setCity(result.getString(4));
+                warehouse.setState(result.getString(5));
+                warehouse.setZipcode(result.getString(6));
+                warehouse.setPhone(result.getString(7));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
+        }
+        return warehouse;
     }
 
     @Override

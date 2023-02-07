@@ -8,7 +8,7 @@ import com.solvd.store.service.ICategory;
 import java.io.IOException;
 
 public class CategoryService implements ICategory {
-    private ICategoryDAO categoryDAO;
+    private final ICategoryDAO categoryDAO;
 
     public CategoryService() throws IOException {
         this.categoryDAO = new CategoryDAO();
@@ -26,7 +26,7 @@ public class CategoryService implements ICategory {
     }
 
     @Override
-    public Category getCategoryById(int id) {
+    public Category getEntityById(int id) {
         return categoryDAO.getEntityById(id);
     }
 
