@@ -1,13 +1,16 @@
 package com.solvd.store.models;
 
 public class Position {
-    private int position_id;
+    private Integer position_id;
     private String name;
     private String description;
 
     public Position(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Position() {
     }
 
     public int getPosition_id() {

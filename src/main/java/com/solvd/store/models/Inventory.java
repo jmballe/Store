@@ -1,7 +1,7 @@
 package com.solvd.store.models;
 
 public class Inventory {
-    private int inventory_id;
+    private Integer inventory_id;
     private int product_id;
     private int quantity;
     private int warehouse_id;
@@ -10,6 +10,9 @@ public class Inventory {
         this.product_id = product_id;
         this.quantity = quantity;
         this.warehouse_id = warehouse_id;
+    }
+
+    public Inventory() {
     }
 
     public int getInventory_id() {

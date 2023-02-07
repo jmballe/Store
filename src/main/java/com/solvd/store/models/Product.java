@@ -1,19 +1,22 @@
 package com.solvd.store.models;
 
 public class Product {
-    private int product_id;
+    private Integer product_id;
     private String name;
-    private String price;
+    private Double price;
     private String description;
-    private int category_id;
-    private int supplier_id;
+    private Integer category_id;
+    private Integer supplier_id;
 
-    public Product(String name, String price, String description, int category_id, int supplier_id) {
+    public Product(String name, Double price, String description, int category_id, int supplier_id) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.category_id = category_id;
         this.supplier_id = supplier_id;
+    }
+
+    public Product() {
     }
 
     public int getProduct_id() {
@@ -32,11 +35,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

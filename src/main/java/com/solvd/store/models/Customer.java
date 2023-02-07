@@ -1,7 +1,7 @@
 package com.solvd.store.models;
 
 public class Customer {
-    private int customer_id;
+    private Integer customer_id;
     private String name;
     private String email;
     private String address;
@@ -11,6 +11,8 @@ public class Customer {
         this.email = email;
         this.address = address;
     }
+
+    public Customer(){}
 
     public int getCustomer_id() {
         return customer_id;

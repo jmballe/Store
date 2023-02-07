@@ -1,21 +1,27 @@
 package com.solvd.store.models;
 
-public class Order {
-    private int order_id;
-    private int customer_id;
-    private String order_date;
-    private String total_price;
-    private int shipping_address_id;
-    private int employees_id;
-    private int order_Status_id;
 
-    public Order(int customer_id, String order_date, String total_price, int shipping_address_id, int employees_id, int order_Status_id) {
+import java.time.LocalDate;
+
+public class Order {
+    private Integer order_id;
+    private Integer customer_id;
+    private LocalDate order_date;
+    private Double total_price;
+    private Integer shipping_address_id;
+    private Integer employees_id;
+    private Integer order_Status_id;
+
+    public Order(int customer_id, LocalDate order_date, Double total_price, int shipping_address_id, int employees_id, int order_Status_id) {
         this.customer_id = customer_id;
         this.order_date = order_date;
         this.total_price = total_price;
         this.shipping_address_id = shipping_address_id;
         this.employees_id = employees_id;
         this.order_Status_id = order_Status_id;
+    }
+
+    public Order() {
     }
 
     public int getOrder_id() {
@@ -34,19 +40,19 @@ public class Order {
         this.customer_id = customer_id;
     }
 
-    public String getOrder_date() {
+    public LocalDate getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(String order_date) {
+    public void setOrder_date(LocalDate order_date) {
         this.order_date = order_date;
     }
 
-    public String getTotal_price() {
+    public Double getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(String total_price) {
+    public void setTotal_price(Double total_price) {
         this.total_price = total_price;
     }
 
@@ -58,7 +64,7 @@ public class Order {
         this.shipping_address_id = shipping_address_id;
     }
 
-    public int getEmployees_id() {
+    public int getEmployee_id() {
         return employees_id;
     }
 

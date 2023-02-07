@@ -1,11 +1,14 @@
 package com.solvd.store.models;
 
 public class Order_status {
-    private int status_id;
+    private Integer status_id;
     private String name;
 
     public Order_status(String name) {
         this.name = name;
+    }
+
+    public Order_status() {
     }
 
     public int getStatus_id() {

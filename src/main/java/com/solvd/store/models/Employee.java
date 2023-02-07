@@ -1,7 +1,7 @@
 package com.solvd.store.models;
 
 public class Employee {
-    private int employee_id;
+    private Integer employee_id;
     private String name;
     private String email;
     private String address;
@@ -13,6 +13,8 @@ public class Employee {
         this.address = address;
         this.position_id = position_id;
     }
+
+    public Employee(){}
 
     public int getEmployee_id() {
         return employee_id;

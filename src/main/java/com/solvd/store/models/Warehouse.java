@@ -2,7 +2,7 @@ package com.solvd.store.models;
 
 public class Warehouse {
 
-    private int warehouse_id;
+    private Integer warehouse_id;
     private String name;
     private String address;
     private String city;
@@ -17,6 +17,9 @@ public class Warehouse {
         this.state = state;
         this.zipcode = zipcode;
         this.phone = phone;
+    }
+
+    public Warehouse() {
     }
 
     public int getWarehouse_id() {

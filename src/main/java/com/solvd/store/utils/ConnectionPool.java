@@ -1,7 +1,5 @@
 package com.solvd.store.utils;
 
-import java.io.IOException;
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,71 +9,67 @@ import java.util.stream.IntStream;
 
 public class ConnectionPool {
 
-    private volatile static ConnectionPool instance = null;
+    private static volatile ConnectionPool connectionPool;
+    private static volatile List<Connection> availableConnections;
 
-    private final List<Connection> availableConnections;
+    private static final Integer POOL_SIZE = 5;
 
-    private ConnectionPool(Integer quantityConnection) throws IOException {
-
+    private ConnectionPool() {
         try {
-            Class.forName(Config.DRIVER);
+            Class.forName(Config.DRIVER.getValue());
         } catch (ClassNotFoundException e) {
-            throw new ConnectException("Driver not found");
+            throw new RuntimeException("Unable to find Driver class");
         }
-        this.availableConnections = new ArrayList<>();
-        IntStream.range(0, quantityConnection)
-                .boxed()
-                .forEach(x -> {
-                    try {
-                        this.availableConnections.add(createConnection());
-                    } catch (IOException e) {
-                        try {
-                            throw new ConnectException("Problems with connection");
-                        } catch (ConnectException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                });
     }
 
-    private Connection createConnection() throws IOException {
+    public static ConnectionPool getInstance() {
+        int poolSize = POOL_SIZE;
+        return getInstance(poolSize);
+    }
+
+    public static ConnectionPool getInstance(Integer initialPoolSize) {
+        if (connectionPool == null && initialPoolSize != null) {
+            synchronized (ConnectionPool.class) {
+                if (connectionPool == null) {
+                    connectionPool = new ConnectionPool();
+                    availableConnections = new ArrayList<>(initialPoolSize);
+                    IntStream.range(0, initialPoolSize)
+                            .boxed()
+                            .forEach(index -> availableConnections.add(createConnection()));
+                }
+            }
+        }
+        return connectionPool;
+    }
+
+    private static Connection createConnection() {
         Connection connection;
         try {
-            connection = DriverManager.getConnection(Config.URL, Config.USERNAME, Config.PASSWORD);
+            connection = DriverManager.getConnection(Config.URL.getValue(), Config.USER.getValue(), Config.PASS.getValue());
         } catch (SQLException e) {
-            throw new ConnectException("Cannot create new connection");
+            throw new RuntimeException("Unable to find Driver class" + e);
         }
         return connection;
     }
 
-    public static ConnectionPool getInstance(Integer quantityConnection) throws IOException {
-        if (instance == null) {
-            synchronized (ConnectionPool.class) {
-                if (instance == null) {
-                    instance = new ConnectionPool(quantityConnection);
-                }
-            }
+    public synchronized Connection getConnection() {
+        Connection connection = null;
+        while (availableConnections.size() <= 0) {
         }
-        return instance;
-    }
-
-    public Connection getConnection() {
-        synchronized (this.availableConnections) {
-            while (this.availableConnections.isEmpty()) {
-                try {
-                    availableConnections.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return availableConnections.remove(0);
+        connection = availableConnections.remove(0);
+        return connection;
     }
 
     public void releaseConnection(Connection connection) {
-        synchronized (this.availableConnections) {
-            this.availableConnections.add(connection);
-            this.availableConnections.notifyAll();
+        if (connection != null) {
+            synchronized (ConnectionPool.class) {
+                if (availableConnections.contains(connection)) {
+                    throw new RuntimeException("Try to release a non-existing connection");
+                }
+                availableConnections.add(connection);
+            }
+        } else {
+            throw new RuntimeException("Connection param in #releaseConnection() is null");
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.solvd.store.models;
 
 public class Supplier {
-    private int supplier_id;
+    private Integer supplier_id;
     private String name;
     private String address;
     private String city;
@@ -14,6 +14,9 @@ public class Supplier {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+    }
+
+    public Supplier() {
     }
 
     public int getSupplier_id() {

@@ -1,7 +1,7 @@
 package com.solvd.store.models;
 
 public class Category {
-    private int category_id;
+    private Integer category_id;
     private String name;
     private String description;
 
@@ -9,12 +9,13 @@ public class Category {
         this.name = name;
         this.description = description;
     }
+    public Category(){}
 
     public int getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(int category_id) {
+    public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
 

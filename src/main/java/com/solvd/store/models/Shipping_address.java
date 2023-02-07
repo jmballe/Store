@@ -1,7 +1,7 @@
 package com.solvd.store.models;
 
 public class Shipping_address {
-    private int shipping_address_id;
+    private Integer shipping_address_id;
     private String name;
     private String description;
     private String address;
@@ -18,6 +18,9 @@ public class Shipping_address {
         this.state = state;
         this.zipcode = zipcode;
         this.phone = phone;
+    }
+
+    public Shipping_address() {
     }
 
     public int getShipping_address_id() {

@@ -2,14 +2,17 @@ package com.solvd.store.models;
 
 public class Order_item {
 
-    private int order_id;
-    private int product_id;
-    private int quantity;
+    private Integer order_id;
+    private Integer product_id;
+    private Integer quantity;
 
     public Order_item(int order_id, int product_id, int quantity) {
         this.order_id = order_id;
         this.product_id = product_id;
         this.quantity = quantity;
+    }
+
+    public Order_item() {
     }
 
     public int getOrder_id() {
