@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="order_statuses" type="order_statusesType"/>
+    <xs:complexType name="order_statusType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+        </xs:sequence>
+        <xs:attribute type="xs:integer" name="status_id"/>
+    </xs:complexType>
+
+    <xs:complexType name="order_statusesType">
+        <xs:sequence>
+            <xs:element type="order_statusType" name="order_status" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

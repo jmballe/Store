@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="Employee.xsd">
+    <employee employee_id="6">
+        <name>John Wick</name>
+        <email>JWick@gmail.com</email>
+        <address>1050 Kennedy Court,Bedford,MA</address>
+        <position_id>2</position_id>
+    </employee>
+</employees>

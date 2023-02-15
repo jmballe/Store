@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="Customer.xsd">
+    <customer customer_id="6">
+        <name>Lionel Richie</name>
+        <email>LRich@gmail.com</email>
+        <address>430 Heather Sees Way,Skedee,KO</address>
+    </customer>
+    <customer customer_id="7">
+        <name>Gloria Gaynor</name>
+        <email>Ggnor@gmail.com</email>
+        <address>1102 Kennedy Court,Bedford,MA</address>
+    </customer>
+</customers>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<categories xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance Category.xsd">
+    <category category_id="6">
+        <name>Gaming</name>
+        <description>Consoles, video games, etc.</description>
+    </category>
+    <category category_id="7">
+        <name>Grocery</name>
+        <description>Food related items.</description>
+    </category>
+</categories>

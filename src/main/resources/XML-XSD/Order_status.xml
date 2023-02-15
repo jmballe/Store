@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order_statuses xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:noNamespaceSchemaLocation="Order_status.xsd">
+    <order_status status_id="6">
+        <name>Sent</name>
+    </order_status>
+</order_statuses>
