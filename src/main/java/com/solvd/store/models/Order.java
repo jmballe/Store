@@ -1,11 +1,19 @@
 package com.solvd.store.models;
-
+import com.solvd.store.parsers.jaxb.DateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import java.time.LocalDate;
-
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Order {
+    @XmlAttribute
     private Integer order_id;
     private Integer customer_id;
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private LocalDate order_date;
     private Double total_price;
     private Integer shipping_address_id;

@@ -1,8 +1,16 @@
 package com.solvd.store.models;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Category")
 public class Category {
-    private Integer category_id;
+    @XmlAttribute
+    private Integer category_id ;
+    @XmlElement
     private String name;
+    @XmlElement
     private String description;
 
     public Category(String name, String description) {

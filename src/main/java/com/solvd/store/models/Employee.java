@@ -1,6 +1,13 @@
 package com.solvd.store.models;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Employee {
+    @XmlAttribute
     private Integer employee_id;
     private String name;
     private String email;
