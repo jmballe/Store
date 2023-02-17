@@ -1,4 +1,6 @@
 package com.solvd.store.models;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.solvd.store.parsers.jaxb.DateAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -11,13 +13,20 @@ import java.time.LocalDate;
 @XmlRootElement
 public class Order {
     @XmlAttribute
+    @JsonProperty("order_id")
     private Integer order_id;
+    @JsonProperty("customer_id")
     private Integer customer_id;
+    @JsonFormat(pattern = "MM-dd-yyyy")
     @XmlJavaTypeAdapter(DateAdapter.class)
     private LocalDate order_date;
+    @JsonProperty("total_price")
     private Double total_price;
+    @JsonProperty("shipping_address_id")
     private Integer shipping_address_id;
-    private Integer employees_id;
+    @JsonProperty("employees_id")
+    private Integer employee_id;
+    @JsonProperty("order_status_id")
     private Integer order_Status_id;
 
     public Order(int customer_id, LocalDate order_date, Double total_price, int shipping_address_id, int employees_id, int order_Status_id) {
@@ -25,7 +34,7 @@ public class Order {
         this.order_date = order_date;
         this.total_price = total_price;
         this.shipping_address_id = shipping_address_id;
-        this.employees_id = employees_id;
+        this.employee_id = employees_id;
         this.order_Status_id = order_Status_id;
     }
 
@@ -73,11 +82,11 @@ public class Order {
     }
 
     public int getEmployee_id() {
-        return employees_id;
+        return employee_id;
     }
 
-    public void setEmployees_id(int employees_id) {
-        this.employees_id = employees_id;
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public int getOrder_Status_id() {
@@ -96,7 +105,7 @@ public class Order {
                 ", order_date='" + order_date + '\'' +
                 ", total_price='" + total_price + '\'' +
                 ", shipping_address_id=" + shipping_address_id +
-                ", employees_id=" + employees_id +
+                ", employees_id=" + employee_id +
                 ", order_Status_id=" + order_Status_id +
                 '}';
     }

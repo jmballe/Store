@@ -1,16 +1,17 @@
 package com.solvd.store.models;
 
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="Category")
 public class Category {
     @XmlAttribute
+    @JsonProperty("category_id")
     private Integer category_id ;
-    @XmlElement
+    @JsonProperty("name")
     private String name;
-    @XmlElement
+    @JsonProperty("description")
     private String description;
 
     public Category(String name, String description) {

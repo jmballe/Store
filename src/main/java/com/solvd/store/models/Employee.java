@@ -1,4 +1,5 @@
 package com.solvd.store.models;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -9,9 +10,13 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class Employee {
     @XmlAttribute
     private Integer employee_id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("address")
     private String address;
+    @JsonProperty("position_id")
     private int position_id;
 
     public Employee(String name, String email, String address, int position_id) {

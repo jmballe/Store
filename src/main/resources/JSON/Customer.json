@@ -1,0 +1,8 @@
+{
+  "customer": {
+    "customer_id": 15,
+    "name": "Albert Einstein",
+    "email": "Albein@gmail.com",
+    "address": "123 North stream st."
+  }
+}

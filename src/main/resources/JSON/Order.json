@@ -1,0 +1,11 @@
+{
+  "order": {
+    "order_id": 9,
+    "customer_id": 2,
+    "order_date": "12/01/2022",
+    "total_price": "1200",
+    "shipping_address_id": 2,
+    "employees_id": 1,
+    "order_Status_id": 3
+  }
+}

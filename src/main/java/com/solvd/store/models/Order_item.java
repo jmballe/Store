@@ -1,4 +1,5 @@
 package com.solvd.store.models;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -8,9 +9,12 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Order_item {
     @XmlAttribute
+    @JsonProperty("order_id")
     private Integer order_id;
     @XmlAttribute
+    @JsonProperty("prodcut_id")
     private Integer product_id;
+    @JsonProperty("quantity")
     private Integer quantity;
 
     public Order_item(int order_id, int product_id, int quantity) {

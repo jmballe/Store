@@ -2,7 +2,6 @@ package com.solvd.store.dao.mySQL;
 
 import com.solvd.store.dao.IOrderDAO;
 import com.solvd.store.models.Order;
-import com.solvd.store.models.Position;
 import com.solvd.store.utils.ConnectionPool;
 
 import java.sql.*;
@@ -27,7 +26,7 @@ public class OrderDAO extends MySQLDAO implements IOrderDAO {
                 order.setOrder_date(result.getDate(3).toLocalDate());
                 order.setTotal_price(result.getDouble(4));
                 order.setShipping_address_id(result.getInt(5));
-                order.setEmployees_id(result.getInt(6));
+                order.setEmployee_id(result.getInt(6));
                 order.setOrder_Status_id(result.getInt(7));
             }
         } catch (SQLException e){
