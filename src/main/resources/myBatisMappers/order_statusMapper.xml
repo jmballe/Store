@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.dao.IOrder_statusDAO">
+    <select id="getEntityById" resultMap="order_statusResultMap">
+        SELECT status_id, name FROM order_status WHERE status_id = #{id}
+    </select>
+
+    <resultMap id="order_statusResultMap" type="com.solvd.store.models.Order_status" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE FROM order_status WHERE status_id = #{status_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="status_id" keyProperty="status_id">
+        INSERT INTO order_status(name) VALUES(#{name})
+    </insert>
+    <update id="update">
+        UPDATE order_status SET name = #{name} WHERE status_id = #{status_id}
+    </update>
+
+</mapper>

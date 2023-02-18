@@ -1,4 +1,4 @@
-package com.solvd.store.service.implementation;
+package com.solvd.store.service.implDAO;
 
 import com.solvd.store.dao.IOrderDAO;
 import com.solvd.store.dao.mySQL.OrderDAO;

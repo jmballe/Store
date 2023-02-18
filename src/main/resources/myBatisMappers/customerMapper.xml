@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.dao.ICustomerDAO">
+    <select id="getEntityById" resultMap="customerResultMap">
+        SELECT customer_id, name, email, address FROM customer WHERE customer_id = #{id}
+    </select>
+
+    <resultMap id="customerResultMap" type="com.solvd.store.models.Customer" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE FROM customer WHERE customer_id = #{customer_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="customer_id" keyProperty="customer_id">
+        INSERT INTO customer (name, email, address) VALUES(#{name}, #{email},#{address})
+    </insert>
+    <update id="update">
+        UPDATE customer SET name = #{name}, email = #{email}, address = #{address} WHERE customer_id = #{customer_id}
+    </update>
+
+</mapper>

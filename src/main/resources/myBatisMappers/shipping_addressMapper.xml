@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.dao.IShipping_addressDAO">
+    <select id="getEntityById" resultMap="shipping_addressResultMap">
+        SELECT shipping_address_id, name, address, city, state, zipcode, phone
+        FROM shipping_address
+        WHERE shipping_address_id = #{id}
+    </select>
+
+    <resultMap id="shipping_addressResultMap" type="com.solvd.store.models.Shipping_address" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE
+        FROM shipping_address
+        WHERE shipping_address_id = #{shipping_address_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="shipping_address_id" keyProperty="shipping_address_id">
+        INSERT INTO shipping_address(name, address, city, state, zipcode, phone)
+        VALUES (#{name}, #{address}, #{city}, #{state}, #{zipcode}, #{phone})
+    </insert>
+    <update id="update">
+        UPDATE shipping_address
+        SET name    = #{name},
+            address = #{address},
+            city    = #{city},
+            state   = #{state},
+            zipcode = #{zipcode},
+            phone   = #{phone}
+        WHERE shipping_address_id = #{shipping_address_id}
+    </update>
+
+</mapper>

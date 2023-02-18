@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.dao.IOrderDAO">
+    <select id="getEntityById" resultMap="orderResultMap">
+        SELECT order_id, customer_id, order_date, total_price, shipping_address_id, employee_id, order_status_id
+        FROM order
+        WHERE order_id = #{id}
+    </select>
+
+    <resultMap id="orderResultMap" type="com.solvd.store.models.Order" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE
+        FROM order
+        WHERE order_id = #{order_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="order_id" keyProperty="order_id">
+        INSERT INTO order(customer_id, order_date, total_price, shipping_address_id, employee_id, order_status_id)
+        VALUES (#{customer_id}, #{order_date}, #{total_price}, #{shipping_address_id}, #{employee_id}, #{order_status_id})
+    </insert>
+    <update id="update">
+        UPDATE order
+        SET customer_id         = #{customer_id},
+            order_date          = #{order_date},
+            total_price         = #{total_price},
+            shipping_address_id = #{shipping_address_id},
+            employee_id         = #{employee_id},
+            order_status_id     = #{order_status_id}
+        WHERE order_id = #{order_id}
+    </update>
+
+</mapper>

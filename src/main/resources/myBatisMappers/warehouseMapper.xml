@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.dao.IWarehouseDAO">
+    <select id="getEntityById" resultMap="warehouseResultMap">
+        SELECT warehouse_id, name, address, city, state, zipcode, phone
+        FROM warehouse
+        WHERE warehouse_id = #{id}
+    </select>
+
+    <resultMap id="warehouseResultMap" type="com.solvd.store.models.Warehouse" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE
+        FROM warehouse
+        WHERE warehouse_id = #{warehouse_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="warehouse_id" keyProperty="warehouse_id">
+        INSERT INTO warehouse(name, address, city, state, zipcode, phone)
+        VALUES (#{name}, #{address}, #{city}, #{state}, #{zipcode}, #{phone})
+    </insert>
+    <update id="update">
+        UPDATE warehouse
+        SET name    = #{name},
+            address = #{address},
+            city    = #{city},
+            state   = #{state},
+            zipcode = #{zipcode},
+            phone   = #{phone}
+        WHERE warehouse_id = #{warehouse_id}
+    </update>
+
+</mapper>

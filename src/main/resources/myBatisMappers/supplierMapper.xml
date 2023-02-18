@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.dao.ISupplierDAO">
+    <select id="getEntityById" resultMap="supplierResultMap">
+        SELECT supplier_id, name, address, city, state, zipcode
+        FROM supplier
+        WHERE supplier_id = #{id}
+    </select>
+
+    <resultMap id="supplierResultMap" type="com.solvd.store.models.Supplier" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE
+        FROM supplier
+        WHERE supplier_id = #{supplier_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="supplier_id" keyProperty="supplier_id">
+        INSERT INTO supplier(name, address, city, state, zipcode)
+        VALUES (#{name}, #{address}, #{city}, #{state}, #{zipcode})
+    </insert>
+    <update id="update">
+        UPDATE supplier
+        SET name    = #{name},
+            address = #{address},
+            city    = #{city},
+            state   = #{state},
+            zipcode = #{zipcode}
+        WHERE supplier_id = #{supplier_id}
+    </update>
+
+</mapper>

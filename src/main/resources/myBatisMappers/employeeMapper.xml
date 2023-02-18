@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.store.models.EmployeeDAO">
+    <select id="getEntityById" resultMap="employeeResultMap">
+        SELECT employee_id, name, email, address, position_id FROM employee WHERE employee_id = #{id}
+    </select>
+
+    <resultMap id="employeeResultMap" type="com.solvd.store.models.Employee" autoMapping="true">
+
+    </resultMap>
+    <delete id="delete">
+        DELETE FROM employee WHERE employee_id = #{employee_id}
+    </delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="employee_id" keyProperty="employee_id">
+        INSERT INTO employee (name, email, address,position_id) VALUES(#{name}, #{email},#{address},#{position_id})
+    </insert>
+    <update id="update">
+        UPDATE employee SET name = #{name}, email = #{email}, address = #{address}, position_id = #{position_id}  WHERE employee_id = #{employee_id}
+    </update>
+
+</mapper>
