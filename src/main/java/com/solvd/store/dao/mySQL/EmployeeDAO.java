@@ -1,7 +1,6 @@
 package com.solvd.store.dao.mySQL;
 
 import com.solvd.store.dao.IEmployeeDAO;
-import com.solvd.store.models.Customer;
 import com.solvd.store.models.Employee;
 import com.solvd.store.utils.ConnectionPool;
 

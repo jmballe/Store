@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+<xs:schema elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="categories" type="categoriesType"/>
     <xs:complexType name="categoryType">
@@ -7,7 +7,7 @@
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
         </xs:sequence>
-        <xs:attribute type="xs:integer" name="category_id" use="optional"/>
+        <xs:attribute type="xs:integer" name="category_id"/>
     </xs:complexType>
 
     <xs:complexType name="categoriesType">

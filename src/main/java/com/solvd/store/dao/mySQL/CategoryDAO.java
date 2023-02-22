@@ -14,8 +14,7 @@ public class CategoryDAO extends MySQLDAO implements ICategoryDAO {
 
     private final ConnectionPool connectionPool = ConnectionPool.getInstance(5);
 
-    public CategoryDAO(){};
-
+    public CategoryDAO(){}
 
 
     @Override

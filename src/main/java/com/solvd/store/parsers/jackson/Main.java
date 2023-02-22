@@ -1,7 +1,5 @@
 package com.solvd.store.parsers.jackson;
 
-import com.fasterxml.jackson.core.exc.StreamWriteException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.solvd.store.models.Customer;
 

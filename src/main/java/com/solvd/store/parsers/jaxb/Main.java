@@ -11,7 +11,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer("John Smith","JSmith@gmail.com","123 fake st.");
-        Customer customer2 = new Customer();
+        Customer customer2;
         customer.setCustomer_id(15);
         try {
             JAXBContext c = JAXBContext.newInstance(Customer.class);

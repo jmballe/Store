@@ -1,15 +1,13 @@
 package com.solvd;
 
 import com.solvd.store.models.Category;
-import com.solvd.store.models.Order_item;
 import com.solvd.store.service.implMyBatis.CategoryService;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         CategoryService catService = new CategoryService();
 
         Category bagsCat = new Category("Bags","All king of bags.");

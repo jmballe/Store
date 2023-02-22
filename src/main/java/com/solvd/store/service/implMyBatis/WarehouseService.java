@@ -1,7 +1,6 @@
 package com.solvd.store.service.implMyBatis;
 
 import com.solvd.store.dao.IWarehouseDAO;
-import com.solvd.store.dao.IWarehouseDAO;
 import com.solvd.store.models.Warehouse;
 import com.solvd.store.service.IWarehouseService;
 import com.solvd.store.utils.MyBatisDaoFactory;
